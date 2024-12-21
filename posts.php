@@ -36,28 +36,11 @@ include('dbcon.php');
 
 <body>
     <?php include("navbar.php") ?>
+    <br><br>
     <div class="container">
-        <div>
-            <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. At tempora magni ipsum odio placeat repellendus amet quibusdam, velit fugit ea, laborum, quos id optio eligendi.
-            </p>
-        </div>
         <?php
-        echo "Welcome " . $_SESSION['username'];
-        ?>
-        <br><br><br>
-        <?php
-        $query = "
-    SELECT *    
-    FROM post
-    INNER JOIN category ON post.category_id = category.id
-    INNER JOIN user ON post.user_id = user.id
-    INNER JOIN follows ON follows.id_followee = post.user_id
-    WHERE user.id != " . $_SESSION['id'] . " 
-      AND follows.id_follower = " . $_SESSION['id'] . "
-    ORDER BY post.created_at DESC
-";
-
+        $category_id = mysqli_real_escape_string($connection, $_GET['id']); // Sanitize the input
+        $query = "SELECT * FROM `post`, `category`, `user` WHERE category.id=" . $category_id . " AND post.category_id = category.id  AND post.user_id = user.id AND user.id != " . $_SESSION['id'] . " ORDER BY post.created_at DESC";
 
         $result = mysqli_query($connection, $query);
 
@@ -81,10 +64,11 @@ include('dbcon.php');
                 echo '        <img src="' . htmlspecialchars($row['photo']) . '" class="card-img-top" alt="Post Image">';
                 echo '        <div class="card-body">';
                 echo '            <h4 class="card-title">' . htmlspecialchars($row['title']) . '</h5>';
-                echo '<p class="card-text">Posted by : <a href="#" class="text-decoration-none"><strong>' . htmlspecialchars($row['username']) . '</strong></a></p>';
+                echo '<p class="card-text">Posted by : <a href="" class="text-decoration-none"><strong>' . htmlspecialchars($row['username']) . '</strong></a></p>';
 
                 echo '            <p class="card-text">Date : ' . htmlspecialchars($row['created_at']) . '</p>';
                 echo '  <p>  Category : <a href="posts.php?id=' . htmlspecialchars($row['category_id']) . '" class="btn btn-primary btn-sm">' . htmlspecialchars($row['category']) . '</a> </p>';
+
 
                 echo '            <a href="view.php?id=' . htmlspecialchars($row['id']) . '" class="btn btn-warning btn-sm">View</a>';
 
@@ -107,6 +91,7 @@ include('dbcon.php');
 
 
     </div>
+    <br><br>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="index.js"></script>
