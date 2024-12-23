@@ -39,12 +39,16 @@
     </ul>
     <hr>
     <div class="dropdown">
-        <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+        <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Admin Menu">
+
             <strong>Admin</strong>
         </a>
         <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
-            <li><a class="dropdown-item" href="#">Logout</a></li>
+
+            <li><a class="dropdown-item" href="logout.php">Logout</a></li>
         </ul>
     </div>
+
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

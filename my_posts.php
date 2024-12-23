@@ -87,7 +87,7 @@ if ($result) {
                 echo ' <img src="' . htmlspecialchars($row['photo']) . '" class="card-img-top" alt="Post Image">';
                 echo ' <div class="card-body">';
                 echo ' <h4 class="card-title">' . htmlspecialchars($row['title']) . '</h5>';
-                echo '<p class="card-text">Posted by : <a href="view-profile.php?id=' .htmlspecialchars($row['user_id']) .'" class="text-decoration-none"><strong>' . htmlspecialchars($row['username']) . '</strong></a></p>';
+                echo '<p class="card-text">Posted by : <a href="view-profile.php?id=' . htmlspecialchars($row['user_id']) . '" class="text-decoration-none"><strong>' . htmlspecialchars($row['username']) . '</strong></a></p>';
 
                 echo ' <p class="card-text">Date : ' . htmlspecialchars($row['created_at']) . '</p>';
                 echo ' <p> Category : <a href="posts.php?id=' . htmlspecialchars($row['category_id']) . '" class="btn btn-primary btn-sm">' . htmlspecialchars($row['category']) . '</a> </p>';
@@ -95,7 +95,7 @@ if ($result) {
 
                 echo '<a href="view-post.php?id=' . htmlspecialchars($row['id'], ENT_QUOTES, 'UTF-8') . '" class="btn btn-success btn-sm" style="margin-right: 20px;">View</a>';
                 echo '<a href="update_post.php?id=' . htmlspecialchars($row['id'], ENT_QUOTES, 'UTF-8') . '" class="btn btn-warning btn-sm">Edit</a>';
-
+                echo '<a href="delete_post.php?id=' . htmlspecialchars($row['id'], ENT_QUOTES, 'UTF-8') . '" class="btn btn-warning btn-sm">Delete</a>';
 
                 echo ' </div>';
                 echo ' </div>';
